@@ -13,18 +13,20 @@
     "postinstall": "typings install"
   },
   "dependencies": {
-    "css-loader": "",
+    "script-loader": "^0.7.2"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.11",
     "fs-extra": "^6.0.1",
     "json-stable-stringify": "^1.0.1",
     "on-build-webpack": "^0.1.0",
     "pixelmatch": "^4.0.2",
     "puppeteer": "^1.5.0",
-    "script-loader": "",
-    "style-loader": "",
+    "style-loader": "^0.21.0",
     "ts-loader": "^3.5.0",
-    "url-loader": ""
-  },
-  "devDependencies": {
-    "typings": "^2.1.1"
+    "typescript": "^2.8.3",
+    "typings": "^2.1.1",
+    "url-loader": "^1.0.1",
+    "webpack": "^3.11.0"
   }
 }

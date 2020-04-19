@@ -46,51 +46,15 @@ To make a production (minified, cache-busted) build for deployment, run:
 
 
 (TODO: the --optimize-minimize doesn't seem to work right now; dunno why, ergh)
----
-This workflow was tested on 2017-02-11 with these versions of major tools:
-
-typescript 2.1.6
-webpack 2.2.1
-
-
-UPDATE: it was tested on 2018-05-26 with:
-
-$ webpack -v
-3.11.0
-
-$ tsc -v
-Version 2.8.3
 
 ------
-
-[instructions last updated on 2018-05-26 ... ergh these instructions
-get outdated so quickly since the npm ecosystem is so unstable and moves
-so fast ...]
 
 To get started, install:
 
 1) Node.js / npm
-2) Global npm dependency installs (run these commands in this directory):
-
-  sudo npm install webpack@v3.11.0 -g # DON'T USE NEWER WEBPACK since it won't work with my webpack.config.js file, ergh
-  sudo npm install webpack-dev-server -g
-  sudo npm install -g typescript
-  sudo npm install -g tsd
-
-3) Run "npm install" in this directory to install node dependencies
-4) Run "tsd install" in this directory to install TypeScript definition files
-  [NB: no longer seems to work as of 2019-06-10]
-
-5) do this near the end, i think
-  npm link webpack            # link to the local node_modules/ dir
-  npm link typescript         # link to the local node_modules/ dir
-
-6) Install bottle.py to run the local webserver (I suppose we could use node too, but oh wells!)
+2) Run "npm install" in this directory to install node dependencies
+3) Install bottle.py to run the local webserver (I suppose we could use node too, but oh wells!)
   pip install bottle # maybe needed sudo
-
-see package.json for specific version dependencies, such as:
-    "ts-loader": "^3.5.0",
-otherwise stuff doesn't play well together, eeeek dependency hell!
 
 ======
 History:
