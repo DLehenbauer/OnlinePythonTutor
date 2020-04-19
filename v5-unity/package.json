@@ -9,7 +9,8 @@
     "start": "python bottle_server.py",
     "py3start": "python3 bottle_server.py",
     "webpack": "webpack --devtool sourcemap --progress --colors --watch",
-    "production-build": "rm -f build/* && webpack && python add_cache_busting_query_strings.py"
+    "production-build": "rm -f build/* && webpack && python add_cache_busting_query_strings.py",
+    "postinstall": "typings install"
   },
   "dependencies": {
     "css-loader": "",
@@ -22,5 +23,8 @@
     "style-loader": "",
     "ts-loader": "^3.5.0",
     "url-loader": ""
+  },
+  "devDependencies": {
+    "typings": "^2.1.1"
   }
 }
