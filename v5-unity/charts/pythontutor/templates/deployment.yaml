@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "pythontutor.fullname" . }}
+  labels:
+    app: {{ template "pythontutor.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: "{{ .Values.name }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels:
+        app: {{ template "pythontutor.fullname" . }}
+        component: "{{ .Values.name }}"
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ template "pythontutor.fullname" . }}
+        image: "{{ .Values.image }}"
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        env:
+        - name: NODE_ENV
+          value: production
+        volumeMounts:
+        - name: config
+          mountPath: /home/node/server/config.json
+          subPath: config.json
+      imagePullSecrets:
+      - name: regsecret
+      volumes:
+        - name: config
+          configMap:
+            name: {{ template "pythontutor.fullname" . }}

@@ -10,7 +10,12 @@
     "py3start": "python3 bottle_server.py",
     "webpack": "webpack --devtool sourcemap --progress --colors --watch",
     "production-build": "rm -f build/* && webpack && python add_cache_busting_query_strings.py",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "build": "docker-compose build",
+    "deploy": "docker push prague.azurecr.io/pythontutor:latest && cd charts/pythontutor && helm upgrade pythontutor .",
+    "connect": "docker exec -it services_pythontutor_1 /bin/sh",
+    "start:all": "docker-compose up",
+    "stop:all": "docker rm -f -v $(docker ps -a -q) || true"
   },
   "dependencies": {
     "script-loader": "^0.7.2"

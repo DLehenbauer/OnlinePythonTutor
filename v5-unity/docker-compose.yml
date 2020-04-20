@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+    pythontutor:
+        image: prague.azurecr.io/pythontutor:latest
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8003:8003"
+        environment:
+            - NODE_ENV=development
+        restart: always
